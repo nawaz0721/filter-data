@@ -1,41 +1,25 @@
-import { useEffect, useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import "./App.css";
-import ProductCard from "./components/cards";
+import Navbar from "./components/Navbar";
+import { Pagination } from "antd";
+import Products from "./pages/Products";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Home from "./pages/Home";
+import Abouts from "./pages/Abouts";
+import ProductDetails from "./pages/ProductDetails";
+import Contact from "./pages/Contact";
 
 function App() {
-  const [products, setProducts] = useState([]);
-  const [search, setSearch] = useState("");
-
-  useEffect(() => {
-    console.log("Component mounted");
-    fetch("https://fakestoreapi.com/products")
-      .then((res) => res.json())
-      .then((products) => setProducts(products));
-  }, []);
-  console.log(products);
-
-  const filtered = products.filter((data) =>
-    data.title.toLowerCase().includes(search.toLowerCase())
-  );
-
   return (
-    <>
-      <div className="container">
-        <div className="search-bar">
-          <input
-            placeholder="Search for products"
-            onChange={(e) => setSearch(e.target.value)}
-          />
-        </div>
-        <div className="product-list">
-          {filtered.map((data) => (
-            <ProductCard key={data.id} product={data} />
-          ))}
-        </div>
-      </div>
-    </>
+    <BrowserRouter>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/products" element={<Products />} />
+        <Route path="/products/:id" element={<ProductDetails />} />
+        <Route path="/abouts" element={<Abouts />} />
+        <Route path="/contact" element={<Contact />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
