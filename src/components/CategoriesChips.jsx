@@ -1,5 +1,4 @@
 function CategoriesChips({ category, isChosen, onClick }) {
-  // const { name, slug, url } = category;
   return (
     <div>
       <div
