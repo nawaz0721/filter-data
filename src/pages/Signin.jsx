@@ -39,7 +39,7 @@ function Signin() {
         const email = error.customData.email;
         // The AuthCredential type that was used.
         const credential = GoogleAuthProvider.credentialFromError(error);
-        console.log("error", errorCode, errorMessage);
+        alert(errorCode, errorMessage);
       });
   };
 
@@ -52,7 +52,7 @@ function Signin() {
       });
     } catch (error) {
       setLoading(false);
-      console.log(error.message);
+      alert(error);
     }
   };
   return (

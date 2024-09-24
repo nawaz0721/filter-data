@@ -1,7 +1,9 @@
+import AboutUs from "../components/Aboutus";
+
 function Abouts() {
   return (
     <div className="abouts">
-      <h1>Welcome to abouts us</h1>
+      <AboutUs />
     </div>
   );
 }

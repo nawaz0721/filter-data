@@ -10,6 +10,7 @@ import Cart from "./pages/Cart";
 import Signin from "./pages/Signin";
 import Signup from "./pages/Signup";
 import Header from "./components/Header";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/home" element={<Home />} />
         <Route path="/signin" element={<Signin />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/products" element={<Products />} />
@@ -25,6 +27,7 @@ function App() {
         <Route path="/abouts" element={<Abouts />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>
+      <Footer />
     </BrowserRouter>
   );
 }

@@ -1,6 +1,6 @@
 import { ShoppingCartOutlined } from "@ant-design/icons";
 import { Badge } from "antd";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import React from "react";
 import { Link } from "react-router-dom";
 import { CartContext } from "../context/CartContext";
@@ -13,13 +13,12 @@ import {
   NavbarMenu,
   NavbarMenuItem,
   Button,
-  link,
   Avatar,
-  AvatarIcon,
 } from "@nextui-org/react";
 import { AuthContext } from "../context/AuthContext";
 import { signOut } from "firebase/auth";
 import { auth } from "../utils/firebase";
+
 export const AcmeLogo = () => (
   <svg fill="none" height="36" viewBox="0 0 32 32" width="36">
     <path
@@ -32,7 +31,7 @@ export const AcmeLogo = () => (
 );
 
 function Header() {
-  const { user, setUser } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
   const { cartItems } = useContext(CartContext);
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const menuItems = [
@@ -53,15 +52,17 @@ function Header() {
   };
 
   return (
-    <Navbar onMenuOpenChange={setIsMenuOpen}>
+    <Navbar onMenuOpenChange={setIsMenuOpen} className="w-full">
       <NavbarContent>
         <NavbarMenuToggle
           aria-label={isMenuOpen ? "Close menu" : "Open menu"}
           className="sm:hidden"
         />
         <NavbarBrand>
-          <AcmeLogo />
-          <p className="font-bold text-inherit">ACME</p>
+          <Link to={"/"}>
+            <AcmeLogo />
+            <p className="font-bold text-inherit">ACME</p>
+          </Link>
         </NavbarBrand>
       </NavbarContent>
 
@@ -78,7 +79,7 @@ function Header() {
         </NavbarItem>
         <NavbarItem>
           <Link color="foreground" to={"/abouts"}>
-            Abouts
+            About
           </Link>
         </NavbarItem>
         <NavbarItem>
