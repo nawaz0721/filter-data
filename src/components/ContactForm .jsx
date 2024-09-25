@@ -1,3 +1,4 @@
+import { Input, Textarea } from "@nextui-org/react";
 import React, { useState } from "react";
 
 function ContactForm() {
@@ -14,44 +15,51 @@ function ContactForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert("Thank you for contacting us!");
+    console.log(formData.email);
+    console.log(formData.name);
+    // alert("Thank you for contacting us!");
     setFormData({ name: "", email: "", message: "" });
     // You can handle form submission here (send data to backend)
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label htmlFor="name">Name:</label>
-        <input
-          type="text"
-          id="name"
-          name="name"
-          value={formData.name}
-          onChange={handleChange}
-        />
-      </div>
-      <div>
-        <label htmlFor="email">Email:</label>
-        <input
-          type="email"
-          id="email"
-          name="email"
-          value={formData.email}
-          onChange={handleChange}
-        />
-      </div>
-      <div>
-        <label htmlFor="message">Message:</label>
-        <textarea
-          id="message"
-          name="message"
-          value={formData.message}
-          onChange={handleChange}
-        ></textarea>
-      </div>
-      <button type="submit">Submit</button>
-    </form>
+    <div className="contact-us-container">
+      <form onSubmit={handleSubmit}>
+        <div>
+          <label htmlFor="name">Name:</label>
+          <Input
+            type="text"
+            value={formData.name}
+            onChange={handleChange}
+            label="Name"
+            id="name"
+            className="my-4"
+          />
+        </div>
+        <div>
+          <label htmlFor="email">Email:</label>
+          <Input
+            type="text"
+            value={formData.email}
+            onChange={handleChange}
+            label="Email"
+            id="email"
+            className="my-4"
+          />
+        </div>
+        <div>
+          <label htmlFor="message">Message:</label>
+          <Textarea
+            value={formData.message}
+            onChange={handleChange}
+            label="Message"
+            id="message"
+            className="my-4"
+          />
+        </div>
+        <button type="submit">Submit</button>
+      </form>
+    </div>
   );
 }
 

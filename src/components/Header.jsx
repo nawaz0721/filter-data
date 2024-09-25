@@ -52,47 +52,58 @@ function Header() {
   };
 
   return (
-    <Navbar onMenuOpenChange={setIsMenuOpen} className="w-full">
+    <Navbar
+      onMenuOpenChange={setIsMenuOpen}
+      className="custom-navbar w-full"
+      style={{ backgroundColor: "#1f1f1f" }}
+    >
       <NavbarContent>
         <NavbarMenuToggle
           aria-label={isMenuOpen ? "Close menu" : "Open menu"}
           className="sm:hidden"
+          style={{ color: "white" }}
         />
         <NavbarBrand>
           <Link to={"/"}>
             <AcmeLogo />
-            <p className="font-bold text-inherit">ACME</p>
+            <p className="font-bold text-inherit" style={{ color: "white" }}>
+              ACME
+            </p>
           </Link>
         </NavbarBrand>
       </NavbarContent>
 
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
         <NavbarItem>
-          <Link color="foreground" to={"/home"}>
+          <Link to={"/home"} style={{ color: "white" }}>
             Home
           </Link>
         </NavbarItem>
         <NavbarItem>
-          <Link color="foreground" to={"/products"}>
+          <Link to={"/products"} style={{ color: "white" }}>
             Products
           </Link>
         </NavbarItem>
         <NavbarItem>
-          <Link color="foreground" to={"/abouts"}>
+          <Link to={"/abouts"} style={{ color: "white" }}>
             About
           </Link>
         </NavbarItem>
         <NavbarItem>
-          <Link color="foreground" to={"/contact"}>
+          <Link to={"/contact"} style={{ color: "white" }}>
             Contact
           </Link>
         </NavbarItem>
       </NavbarContent>
+
       <NavbarContent justify="end">
         <NavbarItem>
           <Link to={"/cart"}>
-            <Badge count={cartItems.length}>
-              <ShoppingCartOutlined style={{ fontSize: 30 }} />
+            <Badge
+              count={cartItems.length}
+              style={{ backgroundColor: "#ffcc00", color: "black" }}
+            >
+              <ShoppingCartOutlined style={{ fontSize: 30, color: "white" }} />
             </Badge>
           </Link>
         </NavbarItem>
@@ -100,7 +111,12 @@ function Header() {
           <Avatar src={user?.userInfo?.photoURL} size="md" />
         ) : (
           <NavbarItem>
-            <Button to={"/signup"} as={Link} color="primary" variant="flat">
+            <Button
+              to={"/signup"}
+              as={Link}
+              style={{ color: "yellow" }}
+              variant="flat"
+            >
               Sign Up
             </Button>
           </NavbarItem>
@@ -109,24 +125,28 @@ function Header() {
           <Button onClick={handleLogoutUser}>Logout</Button>
         ) : (
           <NavbarItem className="hidden lg:flex">
-            <Link to={"/signin"}>Login</Link>
+            <Link to={"/signin"} style={{ color: "white" }}>
+              Login
+            </Link>
           </NavbarItem>
         )}
       </NavbarContent>
+
       <NavbarMenu>
         {menuItems.map((item, index) => (
           <NavbarMenuItem key={`${item}-${index}`}>
             <Link
-              color={
-                index === 2
-                  ? "primary"
-                  : index === menuItems.length - 1
-                  ? "danger"
-                  : "foreground"
-              }
               className="w-full"
-              href="#"
               size="lg"
+              href="#"
+              style={{
+                color:
+                  index === 2
+                    ? "#ffcc00"
+                    : index === menuItems.length - 1
+                    ? "red"
+                    : "white",
+              }}
             >
               {item}
             </Link>

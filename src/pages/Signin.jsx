@@ -39,7 +39,7 @@ function Signin() {
         const email = error.customData.email;
         // The AuthCredential type that was used.
         const credential = GoogleAuthProvider.credentialFromError(error);
-        alert(errorCode, errorMessage);
+        // alert(errorCode, errorMessage);
       });
   };
 
@@ -56,7 +56,7 @@ function Signin() {
     }
   };
   return (
-    <div className="my-10">
+    <div className="my-10 signin-container">
       <form className=" flex flex-col items-center">
         <Input
           isRequired
@@ -64,7 +64,7 @@ function Signin() {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           label="Email"
-          className="w-2/3 sm:w-full self-center my-4"
+          className="my-4"
         />
         <Input
           isRequired
@@ -72,12 +72,13 @@ function Signin() {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           label="Password"
-          className="w-2/3 sm:w-full self-center my-4"
+          className="my-4"
         />
         <Button
           onClick={handleSignin}
           isLoading={loading}
           color="primary"
+          style={{ background: "yellow", color: "black" }}
           auto
           rounded
           size="lg"
@@ -89,10 +90,11 @@ function Signin() {
         <Button
           onClick={handleSignInWithGoogle}
           color="primary"
+          style={{ background: "yellow", color: "black" }}
           auto
           rounded
           size="lg"
-          className="w-1/2"
+          className="w-2/3"
         >
           Sign In With Google
         </Button>

@@ -1,9 +1,22 @@
 import React from "react";
-import ProductSlider from "../components/ProductSlider";
 import FeaturedProducts from "../components/FeaturedProducts ";
 import ContactForm from "../components/ContactForm ";
+import ProductCarousel from "../components/ProductCarousel";
+import product1 from "../Images/product 1.avif";
+import product2 from "../Images/product 2.avif";
+import product3 from "../Images/product 3.avif";
+import product4 from "../Images/product 4 sale.avif";
+import product5 from "../Images/product 5 sale.avif";
 
 function Home() {
+  const products = [
+    { id: 1, name: "1", image: product1 },
+    { id: 2, name: "2", image: product2 },
+    { id: 3, name: "3", image: product3 },
+    { id: 4, name: "4", image: product4 },
+    { id: 5, name: "5", image: product5 },
+  ];
+
   return (
     <div>
       {/* Header */}
@@ -14,19 +27,18 @@ function Home() {
 
       {/* Product Slider */}
       <section id="product-slider">
-        <h2>Featured Products</h2>
-        <ProductSlider />
+        <ProductCarousel products={products} />
       </section>
 
       {/* Products on Sale or Important Products */}
       <section id="on-sale">
-        <h2>Products On Sale</h2>
+        <h1>Products On Sale</h1>
         <FeaturedProducts />
       </section>
 
       {/* Contact Us */}
       <section id="contact-us">
-        <h2>Contact Us</h2>
+        <h1>Contact Us</h1>
         <ContactForm />
       </section>
     </div>

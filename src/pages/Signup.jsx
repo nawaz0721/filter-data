@@ -40,7 +40,7 @@ function Signup() {
         const email = error.customData.email;
         // The AuthCredential type that was used.
         const credential = GoogleAuthProvider.credentialFromError(error);
-        alert(errorCode, errorMessage);
+        // alert(errorCode, errorMessage);
         console.log(errorCode, errorMessage);
       });
   };
@@ -64,7 +64,7 @@ function Signup() {
       });
   };
   return (
-    <div className="my-10">
+    <div className="my-10 signup-container">
       <form className=" flex flex-col items-center">
         <Input
           isRequired
@@ -97,6 +97,7 @@ function Signup() {
           rounded
           size="lg"
           className="w-1/2"
+          style={{ background: "yellow", color: "black" }}
         >
           Sign up
         </Button>
@@ -107,7 +108,8 @@ function Signup() {
           auto
           rounded
           size="lg"
-          className="w-1/2"
+          className="w-3/2"
+          style={{ background: "yellow", color: "black" }}
         >
           Sign up With Google
         </Button>
